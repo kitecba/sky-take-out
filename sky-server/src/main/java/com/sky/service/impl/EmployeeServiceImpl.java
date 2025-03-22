@@ -91,4 +91,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     }
 
+    @Override
+    public Result status(Integer status, Long id) {
+        Employee employee = Employee.builder().status(status).id(id).build();
+        employeeMapper.update(employee);
+        return Result.success();
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.sky.controller.admin;
 
+import com.alibaba.druid.support.spring.stat.annotation.Stat;
 import com.sky.constant.JwtClaimsConstant;
 import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
@@ -72,7 +73,7 @@ public class EmployeeController {
     }
 
     /**
-     *
+     *员工分页查询
      * @param employeePageQueryDTO
      * @return
      */
@@ -80,6 +81,21 @@ public class EmployeeController {
     public Result page(EmployeePageQueryDTO employeePageQueryDTO){
         return employeeService.page(employeePageQueryDTO);
     }
+
+    /**
+     * 启用禁用员工状态
+     * @param status
+     * @param id
+     * @return
+     */
+    @ApiOperation("启用禁用员工状态")
+    @PostMapping("status/{status}")
+    public Result status(@PathVariable Integer status, Long id) {
+        log.info("启用禁用员工状态: {},{}", status, id);
+        return employeeService.status(status,id);
+
+    }
+
 
 
     /**
