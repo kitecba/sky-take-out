@@ -96,7 +96,20 @@ public class EmployeeController {
 
     }
 
+    /**
+     * 根据ID查询员工
+     * @param id
+     * @return
+     */
+    @GetMapping("{id}")
+public Result get(@PathVariable Long id) {
+        return employeeService.get(id);
+}
 
+@PutMapping
+public Result update(@RequestBody EmployeeDTO employeeDTO) {
+        return employeeService.update(employeeDTO);
+}
 
     /**
      * 退出
